@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDER THE ROCK — Clean Wok Whole Meals | Nairobi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- QRCode.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#0D110E',
+                            card: '#151C17',
+                            border: '#222E25',
+                            emerald: '#22C55E',
+                            emeraldDark: '#16A34A',
+                            muted: '#9CA3AF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D110E;
+            color: #F9FAFB;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D110E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222E25;
+            border-radius: 3px;
+        }
+        /* QR Code container styling */
+        #qrcode img, #qrcode canvas {
+            margin: 0 auto;
+            border-radius: 0.75rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-32 selection:bg-brand-emerald selection:text-brand-bg">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-brand-card/90 backdrop-blur-md border-b border-brand-border sticky top-0 z-30">
+        <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-emerald animate-pulse"></span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-brand-emerald">Open 8:00 AM – 9:30 PM</span>
+            </div>
+            <button onclick="openQrModal()" class="inline-flex items-center gap-1.5 text-xs font-semibold bg-brand-border/80 hover:bg-brand-emerald/20 text-gray-200 hover:text-brand-emerald border border-brand-border px-3 py-1.5 rounded-full transition-colors">
+                <i data-lucide="qr-code" class="w-3.5 h-3.5 text-brand-emerald"></i>
+                <span>Menu QR</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-xl mx-auto px-4 pt-6 space-y-6">
+
+        <!-- Brand Header -->
+        <header class="text-center space-y-2 pt-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-[11px] font-bold tracking-widest uppercase">
+                <i data-lucide="map-pin" class="w-3 h-3"></i>
+                <span>Dagoretti • Wanyee Rd</span>
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase">
+                UNDER THE ROCK
+            </h1>
+            <p class="text-xs sm:text-sm font-semibold tracking-widest uppercase text-brand-muted">
+                CLEAN HIGH-PROTEIN WOK MEALS
+            </p>
+        </header>
+
+        <!-- All-Inclusive Whole Meal Callout Banner -->
+        <section class="bg-gradient-to-br from-brand-card to-[#111913] border border-brand-emerald/40 rounded-2xl p-4 shadow-lg shadow-black/40">
+            <div class="flex items-start gap-3">
+                <div class="p-2 rounded-xl bg-brand-emerald/15 text-brand-emerald shrink-0 mt-0.5">
+                    <i data-lucide="flame" class="w-5 h-5"></i>
+                </div>
+                <div class="space-y-1.5">
+                    <h2 class="text-xs font-extrabold uppercase tracking-wider text-brand-emerald">
+                        All-Inclusive Wok Whole Meal
+                    </h2>
+                    <p class="text-sm text-gray-200 leading-relaxed">
+                        Every Whole Meal comes with <span class="text-white font-semibold">150–180g Wok-Seared Protein</span> (onions, carrots &amp; hoho in your choice of <span class="text-white font-semibold">Plain</span> or <span class="text-white font-semibold">Chilli</span>), <span class="text-white font-semibold">Steamed Basmati Rice</span>, and <span class="text-white font-semibold">50ml Fresh Mint-Dhania Chutney</span>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 01: Whole Meals -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-emerald flex items-center gap-2">
+                    <span class="bg-brand-emerald text-brand-bg px-1.5 py-0.5 rounded text-[11px]">01</span>
+                    <span>Select Wok Whole Meals</span>
+                </h2>
+                <span class="text-xs text-brand-muted">Choose Plain or Chilli</span>
+            </div>
+
+            <!-- Meal Cards Container -->
+            <div id="meals-list" class="space-y-3.5">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- Section 02: Add-Ons & Drinks -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-emerald flex items-center gap-2">
+                    <span class="bg-brand-emerald text-brand-bg px-1.5 py-0.5 rounded text-[11px]">02</span>
+                    <span>Add-Ons &amp; Drinks</span>
+                </h2>
+                <span class="text-xs text-brand-muted">Sides &amp; Beverages</span>
+            </div>
+
+            <!-- Extras Cards Container -->
+            <div id="extras-list" class="space-y-2.5">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- Section 03: Order Preferences & Fulfillment -->
+        <section class="bg-brand-card border border-brand-border rounded-2xl p-4 sm:p-5 space-y-5">
+            <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-emerald flex items-center gap-2">
+                <span class="bg-brand-emerald text-brand-bg px-1.5 py-0.5 rounded text-[11px]">03</span>
+                <span>Pickup or Delivery Details</span>
+            </h2>
+
+            <!-- Fulfillment Toggle (Pickup vs Delivery) -->
+            <div class="space-y-2">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
+                    How Are You Getting Your Order?
+                </label>
+                <div class="grid grid-cols-2 gap-2 p-1 bg-brand-bg rounded-xl border border-brand-border">
+                    <button type="button" id="btn-pickup" onclick="setFulfillment('Pickup')" class="py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5">
+                        <i data-lucide="store" class="w-4 h-4"></i>
+                        <span>Pickup at Wanyee Rd</span>
+                    </button>
+                    <button type="button" id="btn-delivery" onclick="setFulfillment('Delivery')" class="py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                        <i data-lucide="bike" class="w-4 h-4"></i>
+                        <span>Delivery (Nairobi)</span>
+                    </button>
+                </div>
+                <p id="pickup-hint" class="text-xs text-brand-muted pt-1">
+                    Pickup point: <span class="text-gray-200 font-medium">Wanyee Rd / Tsavo Skywalk, Dagoretti</span>. Fresh off the wok in ~15–20 mins.
+                </p>
+            </div>
+
+            <!-- Customer Name -->
+            <div class="space-y-1.5">
+                <label for="customer-name" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
+                    Your Name <span class="text-brand-emerald">*</span>
+                </label>
+                <input type="text" id="customer-name" placeholder="e.g. Brian / Amina" class="w-full bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3.5 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+            </div>
+
+            <!-- Delivery Address / Notes (Conditional) -->
+            <div id="delivery-fields" class="space-y-1.5 hidden">
+                <label for="delivery-location" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
+                    Delivery Estate / Landmark &amp; Notes <span class="text-brand-emerald">*</span>
+                </label>
+                <textarea id="delivery-location" rows="2" placeholder="e.g. Kilimani, Kindaruma Rd — Gate B (Rider fee confirmed on WhatsApp)" class="w-full bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors"></textarea>
+            </div>
+
+            <!-- Optional Kitchen Note -->
+            <div class="space-y-1.5">
+                <label for="kitchen-notes" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
+                    Special Kitchen Note <span class="text-gray-500 font-normal">(Optional)</span>
+                </label>
+                <input type="text" id="kitchen-notes" placeholder="e.g. Extra crisp veggies, no chili in chutney..." class="w-full bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3.5 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+            </div>
+        </section>
+
+        <!-- Footer Info -->
+        <footer class="text-center pt-2 pb-6 space-y-2 text-xs text-brand-muted">
+            <p class="font-semibold text-gray-300">UNDER THE ROCK • DAGORETTI / WANYEE RD</p>
+            <p>Open Daily 8:00 AM – 9:30 PM • Sealed Spill-Proof Packaging</p>
+            <div class="pt-1">
+                <button onclick="openQrModal()" class="text-brand-emerald hover:underline font-medium inline-flex items-center gap-1">
+                    <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                    <span>Share Menu or Download Printable QR Sticker</span>
+                </button>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Inline Toast / Validation Message Box -->
+    <div id="toast-box" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md hidden">
+        <div class="bg-[#1B201E] border border-brand-gold text-white px-4 py-3 rounded-xl shadow-2xl flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+                <i data-lucide="alert-circle" class="w-5 h-5 text-brand-gold shrink-0"></i>
+                <p id="toast-message" class="text-xs sm:text-sm font-medium"></p>
+            </div>
+            <button onclick="hideToast()" class="text-gray-400 hover:text-white p-1">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sticky Bottom Checkout Bar -->
+    <div class="fixed bottom-0 inset-x-0 z-30 bg-brand-card/95 backdrop-blur-lg border-t border-brand-border shadow-[0_-10px_30px_rgba(0,0,0,0.7)]">
+        <div class="max-w-xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span id="total-items-badge" class="bg-brand-emerald/20 text-brand-emerald text-xs font-extrabold px-2 py-0.5 rounded-md">
+                        0 items
+                    </span>
+                    <span class="text-xs text-brand-muted">All-Inclusive</span>
+                </div>
+                <div class="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight mt-0.5">
+                    KSh <span id="total-price">0</span>
+                </div>
+            </div>
+
+            <button onclick="openCheckoutSheet()" class="bg-brand-emerald hover:bg-brand-emeraldDark active:scale-[0.98] text-brand-bg font-extrabold text-sm sm:text-base px-5 sm:px-6 py-3.5 rounded-xl shadow-lg shadow-brand-emerald/20 transition-all flex items-center gap-2 shrink-0">
+                <span>Review &amp; Order</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Slide-Up Checkout Sheet -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex-col justify-end sm:justify-center items-center">
+        <div class="bg-brand-card border-t sm:border border-brand-border rounded-t-3xl sm:rounded-3xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Sheet Header -->
+            <div class="px-5 py-4 border-b border-brand-border flex items-center justify-between shrink-0">
+                <div>
+                    <h3 class="font-display font-extrabold text-lg text-white uppercase tracking-tight">
+                        Confirm Your Order
+                    </h3>
+                    <p class="text-xs text-brand-muted">Sent directly to UNDER THE ROCK on WhatsApp</p>
+                </div>
+                <button onclick="closeCheckoutSheet()" class="p-2 rounded-xl bg-brand-bg text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable Sheet Body -->
+            <div class="p-5 space-y-5 overflow-y-auto">
+                <!-- Live Itemized Order Summary -->
+                <div class="bg-brand-bg border border-brand-border rounded-2xl p-4 space-y-2.5">
+                    <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                        <span>Itemized Order Summary</span>
+                        <span>Subtotal</span>
+                    </div>
+                    <div id="checkout-summary-list" class="space-y-2 text-xs sm:text-sm text-gray-200 divide-y divide-brand-border/60">
+                        <!-- Populated via JS -->
+                    </div>
+                    <div class="pt-2.5 border-t border-brand-border flex items-center justify-between font-display font-extrabold text-base text-white">
+                        <span>Total Payable</span>
+                        <span class="text-brand-emerald">KSh <span id="sheet-total-price">0</span></span>
+                    </div>
+                </div>
+
+                <!-- Customer Name -->
+                <div class="space-y-1.5">
+                    <label for="customer-name" class="block text-xs font-bold uppercase tracking-wider text-gray-300">
+                        Your Name <span class="text-brand-gold">*</span>
+                    </label>
+                    <input type="text" id="customer-name" placeholder="e.g. Brian / Amina" class="w-full bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3.5 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                </div>
+
+                <!-- Fulfillment Toggle (Pickup vs Delivery) -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300">
+                        Pickup or Delivery?
+                    </label>
+                    <div class="grid grid-cols-2 gap-2 p-1 bg-brand-bg rounded-xl border border-brand-border">
+                        <button type="button" id="btn-pickup" onclick="setFulfillment('Pickup')" class="py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="store" class="w-4 h-4"></i>
+                            <span>Pickup (Wanyee Rd)</span>
+                        </button>
+                        <button type="button" id="btn-delivery" onclick="setFulfillment('Delivery')" class="py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="bike" class="w-4 h-4"></i>
+                            <span>Delivery</span>
+                        </button>
+                    </div>
+                    <p id="pickup-hint" class="text-xs text-brand-muted pt-0.5">
+                        Pickup at <span class="text-gray-200 font-semibold">Wanyee Rd, Dagoretti</span>. Ready in ~15–20 mins.
+                    </p>
+                </div>
+
+                <!-- Delivery Location Input (Conditional) -->
+                <div id="delivery-fields" class="space-y-1.5 hidden">
+                    <label for="delivery-location" class="block text-xs font-bold uppercase tracking-wider text-gray-300">
+                        Delivery Location / Stage / Landmark <span class="text-brand-gold">*</span>
+                    </label>
+                    <textarea id="delivery-location" rows="2" placeholder="e.g. Kilimani, Kindaruma Rd — Gate B (Rider fee confirmed on WhatsApp)" class="w-full bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors"></textarea>
+                </div>
+            </div>
+
+            <!-- Sheet Footer CTA -->
+            <div class="p-4 bg-brand-bg border-t border-brand-border shrink-0">
+                <button onclick="submitWhatsAppOrder()" class="w-full bg-brand-emerald hover:bg-brand-emeraldDark active:scale-[0.99] text-brand-bg font-extrabold text-base py-3.5 px-6 rounded-xl shadow-lg shadow-brand-emerald/20 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
+                    <span>Order on WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Sticker Generator Modal -->
+    <div id="qr-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-brand-card border border-brand-border rounded-2xl max-w-md w-full p-5 sm:p-6 space-y-5 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-brand-border pb-3">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="qr-code" class="w-5 h-5 text-brand-gold"></i>
+                    <h3 class="font-display font-bold text-lg text-white">Menu QR Sticker Generator</h3>
+                </div>
+                <button onclick="closeQrModal()" class="p-1.5 rounded-lg bg-brand-bg text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-gray-300 leading-relaxed">
+                Enter your live hosted menu link below to generate a crisp, print-ready QR sticker card for your packaging, flyers, or counter.
+            </p>
+
+            <!-- URL Input -->
+            <div class="space-y-1.5">
+                <label for="qr-url-input" class="block text-[11px] font-bold uppercase tracking-wider text-brand-emerald">
+                    Live Menu URL
+                </label>
+                <div class="flex gap-2">
+                    <input type="url" id="qr-url-input" value="https://linktr.ee/s1rdaddy" placeholder="https://your-hosted-menu.com" class="flex-1 bg-brand-bg border border-brand-border focus:border-brand-emerald rounded-xl px-3 py-2.5 text-xs sm:text-sm text-white focus:outline-none">
+                    <button onclick="generateQRCode()" class="bg-brand-border hover:bg-brand-emerald hover:text-brand-bg text-white font-bold text-xs px-3.5 rounded-xl transition-colors">
+                        Update
+                    </button>
+                </div>
+            </div>
+
+            <!-- QR Sticker Preview Card -->
+            <div class="bg-white p-5 rounded-2xl text-center space-y-2 shadow-inner border-4 border-brand-emerald">
+                <div class="text-[#0D0F0E] font-display font-extrabold text-xl tracking-tight uppercase leading-none">
+                    UNDER THE ROCK
+                </div>
+                <div class="text-[10px] font-extrabold text-[#059669] uppercase tracking-widest">
+                    ALL-INCLUSIVE WOK MEALS
+                </div>
+                <div id="qrcode" class="flex justify-center items-center py-1.5"></div>
+                <div class="text-xs font-extrabold text-[#0D0F0E] uppercase tracking-wider">
+                    SCAN TO ORDER ON WHATSAPP
+                </div>
+                <div class="text-[11px] font-bold text-gray-600">
+                    +254 745 552 333 • Wanyee Rd, Dagoretti
+                </div>
+            </div>
+
+            <!-- Modal Actions -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+                <button onclick="copyMenuLink()" class="py-3 px-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-emerald text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="copy" class="w-4 h-4 text-brand-emerald"></i>
+                    <span>Copy Link</span>
+                </button>
+                <button onclick="downloadQRCode()" class="py-3 px-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldDark text-brand-bg text-xs font-extrabold flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Download Sticker (PNG)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Menu Catalog Data (Strict: Chicken & Beef with Plain/Chilli variants, Chutney Add-on, Juice Out of Stock, No Naan)
+        const MEAL_ITEMS = [
+            {
+                id: 'chicken',
+                name: 'Chicken Stir-Fry Whole Meal',
+                price: 500,
+                badge: '150–180g Chicken',
+                description: 'Wok-seared tender chicken strips with crisp onions, carrots & green bell peppers in savory soy glaze. Served with steamed basmati rice & 50ml fresh mint-dhania chutney.'
+            },
+            {
+                id: 'beef',
+                name: 'Beef Stir-Fry Whole Meal',
+                price: 550,
+                badge: '150–180g Beef',
+                description: 'Wok-seared prime beef strips with crisp onions, carrots & green bell peppers in savory soy glaze. Served with steamed basmati rice & 50ml fresh mint-dhania chutney.'
+            }
+        ];
+
+        const ADDON_ITEMS = [
+            {
+                id: 'extra-chutney',
+                name: 'Extra Mint-Dhania Chutney (50ml)',
+                price: 30,
+                badge: 'Sealed Cup',
+                inStock: true,
+                description: 'Freshly blended garden mint, dhania, green chili & lime.'
+            },
+            {
+                id: 'pineapple-juice',
+                name: 'Chilled Pineapple-Mint Juice (200ml)',
+                price: 100,
+                badge: 'Temporarily Out of Stock',
+                inStock: false,
+                description: 'Freshly pressed ripe pineapple infused with garden mint — restocking fresh batch soon.'
+            }
+        ];
+
+        // Cart State supporting independent Plain (No Chilli) and Chilli counts per meal
+        const state = {
+            meals: {
+                chicken: { plain: 0, chilli: 1 },
+                beef: { plain: 0, chilli: 0 }
+            },
+            addons: {
+                'extra-chutney': 0,
+                'pineapple-juice': 0
+            },
+            fulfillment: 'Pickup'
+        };
+
+        const WHATSAPP_NUMBER = '254745552333';
+        let qrInstance = null;
+
+        // Render Menu Items
+        function renderMenu() {
+            const mealsContainer = document.getElementById('meals-list');
+            const extrasContainer = document.getElementById('extras-list');
+
+            mealsContainer.innerHTML = '';
+            extrasContainer.innerHTML = '';
+
+            MEAL_ITEMS.forEach(meal => {
+                const counts = state.meals[meal.id];
+                const mealTotalQty = counts.plain + counts.chilli;
+                const mealSubtotal = mealTotalQty * meal.price;
+                const isSelected = mealTotalQty > 0;
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card border ${isSelected ? 'border-brand-emerald/70' : 'border-brand-border'} rounded-2xl p-4 sm:p-5 transition-all space-y-4`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start gap-3">
+                            <div class="space-y-1.5">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand-emerald/10 text-brand-emerald">
+                                    ${meal.badge}
+                                </span>
+                                <h3 class="font-display font-bold text-lg sm:text-xl text-white leading-snug">
+                                    ${meal.name}
+                                </h3>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="font-display font-extrabold text-lg sm:text-xl text-brand-emerald">
+                                    KSh ${meal.price}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-2">
+                            ${meal.description}
+                        </p>
+                    </div>
+
+                    <!-- Dual Style Steppers: Plain (No Chilli) vs Chilli -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                        <!-- Plain (No Chilli) -->
+                        <div class="bg-brand-bg border ${counts.plain > 0 ? 'border-brand-emerald/60' : 'border-brand-border'} rounded-xl p-2.5 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-white">Plain (No Chilli)</div>
+                                <div class="text-[11px] text-brand-muted">Savory wok glaze</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'plain', -1)" aria-label="Decrease Plain ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-300 hover:text-white bg-brand-card border border-brand-border active:scale-95 transition-all">
+                                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <span class="w-5 text-center font-display font-bold text-sm text-white">${counts.plain}</span>
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'plain', 1)" aria-label="Increase Plain ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-emerald text-brand-bg hover:bg-brand-emeraldDark active:scale-95 transition-all">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chilli -->
+                        <div class="bg-brand-bg border ${counts.chilli > 0 ? 'border-brand-emerald/60' : 'border-brand-border'} rounded-xl p-2.5 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-white flex items-center gap-1">
+                                    <span>Chilli</span>
+                                    <span class="text-brand-emerald text-[10px]">●</span>
+                                </div>
+                                <div class="text-[11px] text-brand-muted">Wok-tossed red chili</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'chilli', -1)" aria-label="Decrease Chilli ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-300 hover:text-white bg-brand-card border border-brand-border active:scale-95 transition-all">
+                                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <span class="w-5 text-center font-display font-bold text-sm text-white">${counts.chilli}</span>
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'chilli', 1)" aria-label="Increase Chilli ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-emerald text-brand-bg hover:bg-brand-emeraldDark active:scale-95 transition-all">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${isSelected ? `
+                        <div class="pt-2 border-t border-brand-border/70 flex justify-between items-center text-xs">
+                            <span class="text-brand-muted">
+                                ${[counts.plain > 0 ? `${counts.plain} Plain` : '', counts.chilli > 0 ? `${counts.chilli} Chilli` : ''].filter(Boolean).join(' + ')}
+                            </span>
+                            <span class="font-bold text-white">Subtotal: KSh ${mealSubtotal.toLocaleString()}</span>
+                        </div>
+                    ` : ''}
+                `;
+                mealsContainer.appendChild(card);
+            });
+
+            ADDON_ITEMS.forEach(addon => {
+                const qty = state.addons[addon.id] || 0;
+                const isSelected = qty > 0 && addon.inStock;
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card border ${isSelected ? 'border-brand-emerald/70' : 'border-brand-border'} ${!addon.inStock ? 'opacity-75' : ''} rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-3 transition-all`;
+
+                const badgeClasses = addon.inStock
+                    ? 'bg-brand-bg text-brand-emerald border-brand-border'
+                    : 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+
+                card.innerHTML = `
+                    <div class="space-y-1 pr-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="font-bold text-sm sm:text-base ${addon.inStock ? 'text-white' : 'text-gray-300'}">${addon.name}</h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${badgeClasses}">
+                                ${addon.badge}
+                            </span>
+                        </div>
+                        <p class="text-xs text-gray-400 leading-snug">${addon.description}</p>
+                        <div class="text-sm font-display font-extrabold ${addon.inStock ? 'text-brand-emerald' : 'text-gray-500 line-through'} pt-0.5">
+                            KSh ${addon.price}
+                        </div>
+                    </div>
+                    ${addon.inStock ? `
+                        <div class="flex items-center gap-2 bg-brand-bg border border-brand-border rounded-xl p-1 shrink-0">
+                            <button type="button" onclick="updateAddonQty('${addon.id}', -1)" aria-label="Decrease quantity" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-brand-border active:scale-95 transition-all">
+                                <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <span class="w-5 text-center font-display font-bold text-sm text-white">${qty}</span>
+                            <button type="button" onclick="updateAddonQty('${addon.id}', 1)" aria-label="Increase quantity" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-emerald/20 text-brand-emerald hover:bg-brand-emerald hover:text-brand-bg active:scale-95 transition-all">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    ` : `
+                        <button type="button" disabled class="px-3 py-2 rounded-xl bg-brand-bg border border-brand-border text-[11px] font-bold uppercase tracking-wider text-gray-500 cursor-not-allowed shrink-0">
+                            Restocking Soon
+                        </button>
+                    `}
+                `;
+                extrasContainer.appendChild(card);
+            });
+
+            updateTotals();
+            lucide.createIcons();
+        }
+
+        // Update Meal Style Quantity
+        function updateMealQty(mealId, style, delta) {
+            const current = state.meals[mealId][style] || 0;
+            state.meals[mealId][style] = Math.max(0, current + delta);
+            renderMenu();
+        }
+
+        // Update Add-on Quantity
+        function updateAddonQty(addonId, delta) {
+            const addon = ADDON_ITEMS.find(a => a.id === addonId);
+            if (!addon || !addon.inStock) return;
+            const current = state.addons[addonId] || 0;
+            state.addons[addonId] = Math.max(0, current + delta);
+            renderMenu();
+        }
+
+        // Update Sticky Total Bar
+        function updateTotals() {
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            MEAL_ITEMS.forEach(meal => {
+                const counts = state.meals[meal.id];
+                const qty = counts.plain + counts.chilli;
+                totalItems += qty;
+                totalPrice += qty * meal.price;
+            });
+
+            ADDON_ITEMS.forEach(addon => {
+                if (!addon.inStock) return;
+                const qty = state.addons[addon.id] || 0;
+                totalItems += qty;
+                totalPrice += qty * addon.price;
+            });
+
+            document.getElementById('total-items-badge').textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+            document.getElementById('total-price').textContent = totalPrice.toLocaleString();
+        }
+
+        // Set Fulfillment Mode
+        function setFulfillment(mode) {
+            state.fulfillment = mode;
+            const btnPickup = document.getElementById('btn-pickup');
+            const btnDelivery = document.getElementById('btn-delivery');
+            const deliveryFields = document.getElementById('delivery-fields');
+            const pickupHint = document.getElementById('pickup-hint');
+
+            if (mode === 'Pickup') {
+                btnPickup.className = 'py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5';
+                btnDelivery.className = 'py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5';
+                deliveryFields.classList.add('hidden');
+                pickupHint.classList.remove('hidden');
+            } else {
+                btnDelivery.className = 'py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5';
+                btnPickup.className = 'py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5';
+                deliveryFields.classList.remove('hidden');
+                pickupHint.classList.add('hidden');
+            }
+        }
+
+        // Toast Notification Helpers
+        let toastTimer = null;
+        function showToast(msg) {
+            const box = document.getElementById('toast-box');
+            document.getElementById('toast-message').textContent = msg;
+            box.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(hideToast, 4500);
+        }
+
+        function hideToast() {
+            document.getElementById('toast-box').classList.add('hidden');
+        }
+
+        // Compile & Launch WhatsApp Order
+        function submitWhatsAppOrder() {
+            const orderLines = [];
+            let total = 0;
+
+            MEAL_ITEMS.forEach(meal => {
+                const counts = state.meals[meal.id];
+                if (counts.plain > 0) {
+                    const sub = counts.plain * meal.price;
+                    total += sub;
+                    orderLines.push(`• ${counts.plain}x ${meal.name} [PLAIN - NO CHILLI] — KSh ${sub.toLocaleString()}`);
+                }
+                if (counts.chilli > 0) {
+                    const sub = counts.chilli * meal.price;
+                    total += sub;
+                    orderLines.push(`• ${counts.chilli}x ${meal.name} [CHILLI] — KSh ${sub.toLocaleString()}`);
+                }
+            });
+
+            ADDON_ITEMS.forEach(addon => {
+                if (!addon.inStock) return;
+                const qty = state.addons[addon.id] || 0;
+                if (qty > 0) {
+                    const sub = qty * addon.price;
+                    total += sub;
+                    orderLines.push(`• ${qty}x ${addon.name} — KSh ${sub.toLocaleString()}`);
+                }
+            });
+
+            if (orderLines.length === 0) {
+                showToast('Please select at least 1 Whole Meal or Add-on before ordering.');
+                return;
+            }
+
+            const customerName = document.getElementById('customer-name').value.trim();
+            if (!customerName) {
+                showToast('Please enter your name so we can label your order.');
+                document.getElementById('customer-name').focus();
+                return;
+            }
+
+            const deliveryLocation = document.getElementById('delivery-location').value.trim();
+            if (state.fulfillment === 'Delivery' && !deliveryLocation) {
+                showToast('Please enter your Nairobi delivery estate or landmark.');
+                document.getElementById('delivery-location').focus();
+                return;
+            }
+
+            const kitchenNotes = document.getElementById('kitchen-notes').value.trim();
+
+            let message = `*NEW ORDER — UNDER THE ROCK*\n`;
+            message += `--------------------------------\n`;
+            message += `*Customer:* ${customerName}\n`;
+            message += `*Order Type:* ${state.fulfillment === 'Pickup' ? 'Pickup at Wanyee Rd (Dagoretti)' : 'Nairobi Delivery'}\n`;
+            if (state.fulfillment === 'Delivery') {
+                message += `*Location:* ${deliveryLocation}\n`;
+            }
+            if (kitchenNotes) {
+                message += `*Kitchen Note:* ${kitchenNotes}\n`;
+            }
+            message += `--------------------------------\n`;
+            message += `*ITEMS:*\n${orderLines.join('\n')}\n`;
+            message += `--------------------------------\n`;
+            message += `*TOTAL: KSh ${total.toLocaleString()}*`;
+            if (state.fulfillment === 'Delivery') {
+                message += ` _(plus rider fee)_`;
+            }
+
+            const encodedText = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // QR Code Modal & Generation Logic
+        function openQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            generateQRCode();
+        }
+
+        function closeQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function generateQRCode() {
+            const container = document.getElementById('qrcode');
+            const urlInput = document.getElementById('qr-url-input').value.trim() || 'https://linktr.ee/s1rdaddy';
+            container.innerHTML = '';
+
+            try {
+                qrInstance = new QRCode(container, {
+                    text: urlInput,
+                    width: 190,
+                    height: 190,
+                    colorDark: '#0D110E',
+                    colorLight: '#FFFFFF',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (err) {
+                showToast('Unable to generate QR code. Check the URL format.');
+            }
+        }
+
+        function copyMenuLink() {
+            const input = document.getElementById('qr-url-input');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showToast('Menu URL copied to clipboard!');
+            } catch (err) {
+                showToast('Could not copy link automatically.');
+            }
+        }
+
+        function downloadQRCode() {
+            const qrContainer = document.getElementById('qrcode');
+            const canvas = qrContainer.querySelector('canvas');
+            const img = qrContainer.querySelector('img');
+
+            // Render dark-and-emerald branded printable sticker card onto HTML5 canvas
+            const exportCanvas = document.createElement('canvas');
+            const width = 640;
+            const height = 780;
+            exportCanvas.width = width;
+            exportCanvas.height = height;
+            const ctx = exportCanvas.getContext('2d');
+
+            // Matte Dark Background (#0D110E)
+            ctx.fillStyle = '#0D110E';
+            ctx.fillRect(0, 0, width, height);
+
+            // Outer Emerald Border
+            ctx.strokeStyle = '#22C55E';
+            ctx.lineWidth = 10;
+            ctx.strokeRect(16, 16, width - 32, height - 32);
+
+            // Brand Title
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '800 46px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('UNDER THE ROCK', width / 2, 95);
+
+            // Subtitle
+            ctx.fillStyle = '#22C55E';
+            ctx.font = '700 20px sans-serif';
+            ctx.fillText('CLEAN HIGH-PROTEIN WOK MEALS • WANYEE RD', width / 2, 134);
+
+            // White rounded backing card for crisp QR scanning
+            const cardSize = 420;
+            const cardX = (width - cardSize) / 2;
+            const cardY = 175;
+            ctx.fillStyle = '#FFFFFF';
+            ctx.beginPath();
+            ctx.roundRect(cardX, cardY, cardSize, cardSize, 24);
+            ctx.fill();
+
+            // Draw QR Code centered inside white card
+            const qrSize = 370;
+            const qrX = (width - qrSize) / 2;
+            const qrY = cardY + (cardSize - qrSize) / 2;
+
+            if (canvas) {
+                ctx.drawImage(canvas, qrX, qrY, qrSize, qrSize);
+            } else if (img) {
+                ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+            }
+
+            // Bottom CTA
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '800 26px sans-serif';
+            ctx.fillText('SCAN TO ORDER ON WHATSAPP', width / 2, 660);
+
+            ctx.fillStyle = '#22C55E';
+            ctx.font = '700 20px sans-serif';
+            ctx.fillText('OPEN DAILY: 8:00 AM – 9:30 PM', width / 2, 700);
+
+            // Trigger PNG Download
+            const link = document.createElement('a');
+            link.download = 'Under-The-Rock-QR-Sticker.png';
+            link.href = exportCanvas.toDataURL('image/png');
+            link.click();
+            showToast('Branded QR Sticker PNG downloaded!');
+        }
+        ];
+
+        // Optional Extras (Only actual menu items — zero bread/naan)
+        const EXTRAS = [
+            {
+                id: 'extra-chutney',
+                name: 'Extra Mint-Dhania Chutney (50ml)',
+                price: 30,
+                badge: 'Sealed Cup',
+                description: 'Freshly blended garden mint, dhania, green chili & lime.'
+            },
+            {
+                id: 'extra-juice',
+                name: 'Extra Chilled Pineapple-Mint Juice (200ml)',
+                price: 100,
+                badge: 'Sealed Cup',
+                description: 'Freshly pressed ripe pineapple infused with garden mint.'
+            }
+        ];
+
+        // Cart State
+        const state = {
+            meals: {
+                chicken: { plain: 0, chilli: 0 },
+                beef: { plain: 0, chilli: 0 }
+            },
+            extras: {
+                'extra-chutney': 0,
+                'extra-juice': 0
+            },
+            fulfillment: 'Pickup'
+        };
+
+        const WHATSAPP_NUMBER = '254745552333';
+
+        // Render Main Meals & Optional Extras
+        function renderMenu() {
+            const mealsContainer = document.getElementById('meals-list');
+            const extrasContainer = document.getElementById('extras-list');
+
+            mealsContainer.innerHTML = '';
+            extrasContainer.innerHTML = '';
+
+            MAIN_MEALS.forEach(meal => {
+                const plainQty = state.meals[meal.id].plain;
+                const chilliQty = state.meals[meal.id].chilli;
+                const totalMealQty = plainQty + chilliQty;
+                const isSelected = totalMealQty > 0;
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card border ${isSelected ? 'border-brand-emerald/80 shadow-lg shadow-brand-emerald/5' : 'border-brand-border'} rounded-2xl p-4 sm:p-5 transition-all`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start gap-3">
+                        <div class="space-y-1.5">
+                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand-emerald/15 text-brand-emerald">
+                                ${meal.badge}
+                            </span>
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-white leading-snug">
+                                ${meal.name}
+                            </h3>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <span class="font-display font-extrabold text-xl text-brand-gold">
+                                KSh ${meal.price}
+                            </span>
+                            <span class="block text-[10px] font-semibold uppercase tracking-wider text-brand-muted">
+                                All-Inclusive
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-2.5">
+                        ${meal.description}
+                    </p>
+
+                    <!-- Separate Plain vs Chilli Steppers -->
+                    <div class="mt-4 pt-3.5 border-t border-brand-border/80 space-y-2.5">
+                        <!-- Plain (No Chilli) Row -->
+                        <div class="flex items-center justify-between bg-brand-bg/90 border ${plainQty > 0 ? 'border-brand-emerald/50' : 'border-brand-border'} rounded-xl px-3 py-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-emerald"></span>
+                                <div>
+                                    <span class="text-xs sm:text-sm font-bold text-white block leading-none">Plain (No Chilli)</span>
+                                    <span class="text-[11px] text-brand-muted">Savory wok glaze only</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'plain', -1)" aria-label="Decrease Plain ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-card border border-brand-border text-gray-300 hover:text-white active:scale-95 transition-all">
+                                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <span class="w-5 text-center font-display font-bold text-sm text-white">${plainQty}</span>
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'plain', 1)" aria-label="Increase Plain ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-emerald text-brand-bg hover:bg-brand-emeraldDark active:scale-95 transition-all">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chilli Row -->
+                        <div class="flex items-center justify-between bg-brand-bg/90 border ${chilliQty > 0 ? 'border-brand-gold/60' : 'border-brand-border'} rounded-xl px-3 py-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+                                <div>
+                                    <span class="text-xs sm:text-sm font-bold text-white flex items-center gap-1 leading-none">
+                                        <span>Chilli</span>
+                                        <i data-lucide="flame" class="w-3.5 h-3.5 text-brand-gold"></i>
+                                    </span>
+                                    <span class="text-[11px] text-brand-muted">Wok-tossed with fresh chili</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'chilli', -1)" aria-label="Decrease Chilli ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-card border border-brand-border text-gray-300 hover:text-white active:scale-95 transition-all">
+                                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <span class="w-5 text-center font-display font-bold text-sm text-white">${chilliQty}</span>
+                                <button type="button" onclick="updateMealQty('${meal.id}', 'chilli', 1)" aria-label="Increase Chilli ${meal.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-gold text-brand-bg hover:opacity-90 active:scale-95 transition-all">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                mealsContainer.appendChild(card);
+            });
+
+            EXTRAS.forEach(extra => {
+                const qty = state.extras[extra.id] || 0;
+                const isSelected = qty > 0;
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card border ${isSelected ? 'border-brand-emerald/70' : 'border-brand-border'} rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-3 transition-all`;
+                card.innerHTML = `
+                    <div class="space-y-1 pr-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="font-bold text-sm sm:text-base text-white">${extra.name}</h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-brand-bg text-brand-emerald border border-brand-border">
+                                ${extra.badge}
+                            </span>
+                        </div>
+                        <p class="text-xs text-gray-400 leading-snug">${extra.description}</p>
+                        <div class="text-sm font-display font-extrabold text-brand-gold pt-0.5">
+                            KSh ${extra.price}
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-brand-bg border border-brand-border rounded-xl p-1 shrink-0">
+                        <button type="button" onclick="updateExtraQty('${extra.id}', -1)" aria-label="Decrease ${extra.name}" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-brand-border active:scale-95 transition-all">
+                            <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <span class="w-5 text-center font-display font-bold text-sm text-white">${qty}</span>
+                        <button type="button" onclick="updateExtraQty('${extra.id}', 1)" aria-label="Increase ${extra.name}" class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-emerald/20 text-brand-emerald hover:bg-brand-emerald hover:text-brand-bg active:scale-95 transition-all">
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                `;
+                extrasContainer.appendChild(card);
+            });
+
+            updateTotals();
+            lucide.createIcons();
+        }
+
+        // Update Plain or Chilli Meal Quantity
+        function updateMealQty(mealId, spiceType, delta) {
+            const current = state.meals[mealId][spiceType] || 0;
+            state.meals[mealId][spiceType] = Math.max(0, current + delta);
+            renderMenu();
+        }
+
+        // Update Optional Extra Quantity
+        function updateExtraQty(extraId, delta) {
+            const current = state.extras[extraId] || 0;
+            state.extras[extraId] = Math.max(0, current + delta);
+            renderMenu();
+        }
+
+        // Build Line Items Helper
+        function getCartLineItems() {
+            const lines = [];
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            MAIN_MEALS.forEach(meal => {
+                const plainQty = state.meals[meal.id].plain;
+                const chilliQty = state.meals[meal.id].chilli;
+
+                if (plainQty > 0) {
+                    const sub = plainQty * meal.price;
+                    lines.push({
+                        label: `${plainQty}x ${meal.name} — Plain (No Chilli)`,
+                        subtotal: sub
+                    });
+                    totalItems += plainQty;
+                    totalPrice += sub;
+                }
+
+                if (chilliQty > 0) {
+                    const sub = chilliQty * meal.price;
+                    lines.push({
+                        label: `${chilliQty}x ${meal.name} — Chilli`,
+                        subtotal: sub
+                    });
+                    totalItems += chilliQty;
+                    totalPrice += sub;
+                }
+            });
+
+            EXTRAS.forEach(extra => {
+                const qty = state.extras[extra.id] || 0;
+                if (qty > 0) {
+                    const sub = qty * extra.price;
+                    lines.push({
+                        label: `${qty}x ${extra.name}`,
+                        subtotal: sub
+                    });
+                    totalItems += qty;
+                    totalPrice += sub;
+                }
+            });
+
+            return { lines, totalItems, totalPrice };
+        }
+
+        // Update Sticky Bottom Bar Totals
+        function updateTotals() {
+            const { totalItems, totalPrice } = getCartLineItems();
+            document.getElementById('total-items-badge').textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+            document.getElementById('total-price').textContent = totalPrice.toLocaleString();
+        }
+
+        // Slide-Up Checkout Sheet Controls
+        function openCheckoutSheet() {
+            const { lines, totalItems, totalPrice } = getCartLineItems();
+            if (totalItems === 0) {
+                showToast('Select at least 1 Whole Meal (Plain or Chilli) to continue.');
+                return;
+            }
+
+            const summaryContainer = document.getElementById('checkout-summary-list');
+            summaryContainer.innerHTML = lines.map(item => `
+                <div class="pt-2 first:pt-0 flex items-start justify-between gap-3">
+                    <span class="font-medium text-gray-200">${item.label}</span>
+                    <span class="font-bold text-white shrink-0">KSh ${item.subtotal.toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('sheet-total-price').textContent = totalPrice.toLocaleString();
+
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeCheckoutSheet() {
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Set Fulfillment Mode
+        function setFulfillment(mode) {
+            state.fulfillment = mode;
+            const btnPickup = document.getElementById('btn-pickup');
+            const btnDelivery = document.getElementById('btn-delivery');
+            const deliveryFields = document.getElementById('delivery-fields');
+            const pickupHint = document.getElementById('pickup-hint');
+
+            if (mode === 'Pickup') {
+                btnPickup.className = 'py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5';
+                btnDelivery.className = 'py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5';
+                deliveryFields.classList.add('hidden');
+                pickupHint.classList.remove('hidden');
+            } else {
+                btnDelivery.className = 'py-2.5 px-3 rounded-lg text-xs font-bold bg-brand-emerald text-brand-bg transition-all flex items-center justify-center gap-1.5';
+                btnPickup.className = 'py-2.5 px-3 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all flex items-center justify-center gap-1.5';
+                deliveryFields.classList.remove('hidden');
+                pickupHint.classList.add('hidden');
+            }
+        }
+
+        // Toast Notification Helpers
+        let toastTimer = null;
+        function showToast(msg) {
+            const box = document.getElementById('toast-box');
+            document.getElementById('toast-message').textContent = msg;
+            box.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(hideToast, 4500);
+        }
+
+        function hideToast() {
+            document.getElementById('toast-box').classList.add('hidden');
+        }
+
+        // Compile & Launch WhatsApp Order
+        function submitWhatsAppOrder() {
+            const { lines, totalItems, totalPrice } = getCartLineItems();
+            if (totalItems === 0) {
+                showToast('Please select at least 1 item before ordering.');
+                return;
+            }
+
+            const customerName = document.getElementById('customer-name').value.trim();
+            if (!customerName) {
+                showToast('Please enter your name for your order label.');
+                document.getElementById('customer-name').focus();
+                return;
+            }
+
+            const deliveryLocation = document.getElementById('delivery-location').value.trim();
+            if (state.fulfillment === 'Delivery' && !deliveryLocation) {
+                showToast('Please enter your delivery stage, estate, or landmark.');
+                document.getElementById('delivery-location').focus();
+                return;
+            }
+
+            const formattedItems = lines.map(l => `• ${l.label} — KSh ${l.subtotal.toLocaleString()}`).join('\n');
+
+            let message = `*NEW ORDER — UNDER THE ROCK*\n`;
+            message += `--------------------------------\n`;
+            message += `*Customer:* ${customerName}\n`;
+            message += `*Fulfillment:* ${state.fulfillment === 'Pickup' ? 'Pickup at Wanyee Rd, Dagoretti' : 'Delivery'}\n`;
+            if (state.fulfillment === 'Delivery') {
+                message += `*Delivery Location:* ${deliveryLocation}\n`;
+            }
+            message += `--------------------------------\n`;
+            message += `*ORDER DETAILS:*\n${formattedItems}\n`;
+            message += `--------------------------------\n`;
+            message += `*TOTAL: KSh ${totalPrice.toLocaleString()}*`;
+            if (state.fulfillment === 'Delivery') {
+                message += ` _(plus rider fee)_`;
+            }
+
+            const encodedText = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // QR Code Sticker Modal & Generation
+        function openQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            generateQRCode();
+        }
+
+        function closeQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function generateQRCode() {
+            const container = document.getElementById('qrcode');
+            const urlInput = document.getElementById('qr-url-input').value.trim() || 'https://linktr.ee/s1rdaddy';
+            container.innerHTML = '';
+
+            try {
+                new QRCode(container, {
+                    text: urlInput,
+                    width: 185,
+                    height: 185,
+                    colorDark: '#0D0F0E',
+                    colorLight: '#FFFFFF',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (err) {
+                showToast('Unable to generate QR code. Check the URL format.');
+            }
+        }
+
+        function copyMenuLink() {
+            const input = document.getElementById('qr-url-input');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showToast('Menu URL copied to clipboard!');
+            } catch (err) {
+                showToast('Could not copy link automatically.');
+            }
+        }
+
+        function downloadQRCode() {
+            const qrContainer = document.getElementById('qrcode');
+            const canvas = qrContainer.querySelector('canvas');
+            const img = qrContainer.querySelector('img');
+
+            // Draw branded print-ready QR sticker card on HTML5 Canvas
+            const exportCanvas = document.createElement('canvas');
+            const width = 640;
+            const height = 780;
+            exportCanvas.width = width;
+            exportCanvas.height = height;
+            const ctx = exportCanvas.getContext('2d');
+
+            // Matte Black Outer Border Frame
+            ctx.fillStyle = '#0D0F0E';
+            ctx.fillRect(0, 0, width, height);
+
+            // Crisp White Sticker Card Inner Area
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(24, 24, width - 48, height - 48);
+
+            // Emerald Top Ribbon
+            ctx.fillStyle = '#10B981';
+            ctx.fillRect(24, 24, width - 48, 20);
+
+            // Brand Name
+            ctx.fillStyle = '#0D0F0E';
+            ctx.font = '800 46px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('UNDER THE ROCK', width / 2, 108);
+
+            // Subtitle
+            ctx.fillStyle = '#059669';
+            ctx.font = '800 20px sans-serif';
+            ctx.fillText('ALL-INCLUSIVE WOK MEALS', width / 2, 144);
+
+            // Center QR Code
+            const qrSize = 410;
+            const qrX = (width - qrSize) / 2;
+            const qrY = 180;
+
+            if (canvas) {
+                ctx.drawImage(canvas, qrX, qrY, qrSize, qrSize);
+            } else if (img) {
+                ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+            }
+
+            // Gold Accent Divider
+            ctx.fillStyle = '#F59E0B';
+            ctx.fillRect(140, 616, width - 280, 5);
+
+            // Scan Callout
+            ctx.fillStyle = '#0D0F0E';
+            ctx.font = '800 26px sans-serif';
+            ctx.fillText('SCAN TO ORDER ON WHATSAPP', width / 2, 665);
+
+            // Phone & Location
+            ctx.fillStyle = '#374151';
+            ctx.font = '700 20px sans-serif';
+            ctx.fillText('+254 745 552 333 • Wanyee Rd, Dagoretti', width / 2, 705);
+
+            // Trigger PNG Download
+            const link = document.createElement('a');
+            link.download = 'Under-The-Rock-QR-Sticker.png';
+            link.href = exportCanvas.toDataURL('image/png');
+            link.click();
+            showToast('Print-Ready QR Card (PNG) downloaded!');
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            if (window.location.protocol.startsWith('http')) {
+                document.getElementById('qr-url-input').value = window.location.href;
+            }
+        });
+    </script>
+</body>
+</html>
